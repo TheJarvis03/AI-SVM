@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Review</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Comment Evaluation</h1>
+        <form action="/" method="POST">
+            <label for="user_input">Enter your comment:</label>
+            <textarea id="user_input" name="user_input" rows="4" cols="50" required>{{ user_input }}</textarea>
+            <br>
+            <button type="submit">Evaluate</button>
+        </form>          
+
+        {% if prediction is not none %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+            <p><strong>Model Accuracy:</strong> {{ accuracy }}%</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const result = document.querySelector('.result');
+            if (result) {
+                setTimeout(() => result.classList.add('show'), 100);
+            }
+        });
+    </script>
+</body>
+</html>
