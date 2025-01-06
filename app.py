@@ -14,7 +14,6 @@ vector = joblib.load(vector_path)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     prediction = None
-    confidence = None
     accuracy = None
     user_input = request.form.get('user_input', '')
 
